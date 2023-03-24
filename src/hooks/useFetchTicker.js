@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
-export const useFetchIndex = (index) => {
+export const useFetchTicker = (ticker) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [controller, setController] = useState(null)
 
   useEffect(() => {
-    const URL = `https://www.econdb.com/api/series/${index}/?API_TOKEN=ed4c18f504bdb799ab4e0d431658ad73fe1a37f5&format=json`
+    const URL = `https://www.econdb.com/api/series/${ticker}/?API_TOKEN=ed4c18f504bdb799ab4e0d431658ad73fe1a37f5&format=json`
 
     const abortController = new AbortController();
     setController(abortController);
@@ -24,7 +24,7 @@ export const useFetchIndex = (index) => {
       })
       .finally(() => setLoading(false));
 
-  }, [index]);
+  }, [ticker]);
 
   const handleCancelRequest = () => {
     if (controller) {
