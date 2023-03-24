@@ -8,7 +8,14 @@ module.exports = {
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'bgDefault': '#0F833D',
+      },
+      textColor: {
+        'textDefault': '#CBE4DE',
+      },
+    },
   },
   plugins: [],
 }
