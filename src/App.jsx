@@ -1,4 +1,6 @@
 import { CheckCircleIcon } from "@heroicons/react/solid";
+import React from "react";
+import { Header } from "./components/Header";
 
 import {
   Card,
@@ -1097,41 +1099,44 @@ const valueFormatter = (number) =>
 
 export default function Example() {
   return (
-    <Card>
-      <div className="text-center">
-        <Icon
-          icon={CheckCircleIcon}
-          variant="light"
-          size="xl"
-          color="emerald"
-        />
-        <Title className="mt-2">All services are online</Title>
-        <Text className="text-center">As of September 7th, 1:46 PM</Text>
-      </div>
+    <React.Fragment>
+      <Header></Header>
+      <Card>
+        <div className="text-center">
+          <Icon
+            icon={CheckCircleIcon}
+            variant="light"
+            size="xl"
+            color="emerald"
+          />
+          <Title className="mt-2">All services are online</Title>
+          <Text className="text-center">As of September 7th, 1:46 PM</Text>
+        </div>
 
-      <Divider />
+        <Divider />
 
-      <Flex className="mt-4 whitespace-nowrap">
-        <Flex justifyContent="start" className="space-x-2">
-          <Icon icon={CheckCircleIcon} color="emerald" />
-          <Text>
-            <Bold>API</Bold>
-          </Text>
+        <Flex className="mt-4 whitespace-nowrap">
+          <Flex justifyContent="start" className="space-x-2">
+            <Icon icon={CheckCircleIcon} color="emerald" />
+            <Text>
+              <Bold>API</Bold>
+            </Text>
+          </Flex>
+          <Text>99.87% uptime</Text>
         </Flex>
-        <Text>99.87% uptime</Text>
-      </Flex>
-      <Tracker data={availability} className="mt-2" />
-      <Title className="mt-6">Avg. response time per day</Title>
-      <LineChart
-        className="mt-4 h-80"
-        data={latency}
-        index="Date"
-        categories={["Avg. Response Time"]}
-        colors={["gray"]}
-        valueFormatter={valueFormatter}
-        showLegend={false}
-        yAxisWidth={48}
-      />
-    </Card>
+        <Tracker data={availability} className="mt-2" />
+        <Title className="mt-6">Avg. response time per day</Title>
+        <LineChart
+          className="mt-4 h-80"
+          data={latency}
+          index="Date"
+          categories={["Avg. Response Time"]}
+          colors={["gray"]}
+          valueFormatter={valueFormatter}
+          showLegend={false}
+          yAxisWidth={48}
+        />
+      </Card>
+    </React.Fragment>
   );
 }
