@@ -1100,7 +1100,11 @@ const valueFormatter = (number) =>
 export default function Example() {
   return (
     <React.Fragment>
-      <Header></Header>
+      <Header>
+        <header className='p-2 bg-bgDefault text-textDefault text-lg text-center md:pd-4'>
+          <h1>Indicadores Económicos</h1>
+        </header>
+      </Header>
       <Card>
         <div className="text-center">
           <Icon

@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Header() {
+function Header({ children }) {
   return (
-    <header className='p-2 bg-bgDefault text-textDefault text-lg text-center md:pd-4'>
-      <h1>Indicadores Económicos</h1>
-    </header>
+    <React.Fragment>
+      {children}
+    </React.Fragment>
   )
 }
 
