@@ -10,10 +10,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'bgDefault': '#0F833D',
+        'bgBody': '#0F833D',
+        'bgComponent': '#2C3333',
+        'bgElement': '#2E4F4F'
       },
       textColor: {
-        'textDefault': '#CBE4DE',
+        'textBody': '#CBE4DE',
       },
     },
   },
