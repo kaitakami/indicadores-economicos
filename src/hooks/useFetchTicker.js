@@ -17,7 +17,7 @@ export const useFetchTicker = (ticker) => {
       .then((json) => setData(json))
       .catch((error) => {
         if (error.name === "AbortError") {
-          console.log("Cancelled request");
+          setError("Cancelled Request");
         } else {
           setError(error);
         }
