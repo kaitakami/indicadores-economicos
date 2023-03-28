@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className="bg-bgDefault text-textDefault">
+      <div className="bg-bgBody text-textBody min-w-screen min-h-screen">
         <Header />
         {children}
       </div>

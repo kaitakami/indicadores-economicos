@@ -33,6 +33,11 @@ export const useFetchTicker = (ticker) => {
     }
   };
 
-  return { data, loading, error, handleCancelRequest };
+  return { 
+    data, 
+    loading, 
+    error, 
+    handleCancelRequest 
+  };
 }
 
