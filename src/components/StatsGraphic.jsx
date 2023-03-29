@@ -62,7 +62,7 @@ function StatsGraphic(props) {
   return (
     <Card className='bg-bgComponent ring-none rounded-md px-2 pt-4 md:pr-8 md:pb-8'>
       <div className="text-center">
-        <Title className="mt-2 text-textBody">Consumer price index of {props.currentCountry}</Title>
+        <Title className="mt-2 text-textBody">{props.currentDescription} of {props.currentCountry}</Title>
         <Text className="text-center text-textBody">Until: {props.lastDateLoad}</Text>
       </div>
       <LineChart

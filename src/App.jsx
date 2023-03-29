@@ -26,7 +26,7 @@ const App = () => {
       lastDate = new Date(`${(data.data.dates[data.data.dates.length - 1]).slice(0, 4)}/${(data.data.dates[data.data.dates.length - 1]).slice(5, 7)}/${(data.data.dates[data.data.dates.length - 1]).slice(8, 10)}`);
     } else {
       const today = new Date()
-      const day = today.getUTCDay()-1;
+      const day = today.getUTCDay() * 0 + 1;
       const month = today.getUTCMonth();
       const year = today.getUTCFullYear();
       lastDate = new Date(`${year}/${month}/${day}`);
@@ -62,6 +62,7 @@ const App = () => {
         />
         <StatsGraphic 
         lastDateLoad = {lastDateLoad}
+        currentDescription = {currentDescription}
         currentCountry = {currentCountry}
         />
       </section>
