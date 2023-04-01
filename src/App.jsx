@@ -54,7 +54,6 @@ const App = () => {
       newObject.country = `${value}`;
       setCurrentDataTicker(newObject);
     }
-    console.log(currentDataTicker);
   }
 
   return (
@@ -74,9 +73,13 @@ const App = () => {
             />
           )}
         />
+
         <StatsGraphic 
           currentDataTicker = {currentDataTicker}
-        />
+        >
+          {currentDataTicker.register} of {currentDataTicker.country}
+        </StatsGraphic>
+        
       </section>
     </Layout>
   );

@@ -13,10 +13,16 @@ const valueFormatter = (number) =>
 const latency = [];
 
 function StatsGraphic(props) {
+
+  useEffect(()=>{
+    console.log("StatsGraphic:");
+    console.log(props.currentDataTicker);
+  });
+
   return (
     <Card className='bg-component ring-none rounded-md px-2 pt-4 md:pr-8 md:pb-8'>
       <div className="text-center">
-        <Title className="mt-2 text-body">{props.currentDataTicker.register} of {props.currentDataTicker.country}</Title>
+        <Title className="mt-2 text-body">{props.children}</Title>
       </div>
       <LineChart
         className="mt-4 h-80 text-textBody"

@@ -13,7 +13,6 @@ function FormGraphicData( props ) {
     let newObject = props.currentDataTicker;
     newObject.ticker = `${loginData.dataTeletype}${loginData.dataCountry}`;
     props.setCurrentDataTicker(newObject);
-    console.log(props.currentDataTicker);
   }
 
   return (
