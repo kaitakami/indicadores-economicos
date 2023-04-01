@@ -14,7 +14,19 @@ export const useFetchTicker = (ticker) => {
 
     fetch(URL, { signal: abortController.signal })
       .then((response) => response.json())
-      .then((json) => setData(json))
+      .then((json) => {
+        const { data: { dates }, ticker, description, geography } = json
+        const data = json.data.values.map((value, index) => ({
+          date: dates[index],
+          value
+        }))
+        setData({
+          ticker,
+          description,
+          geography,
+          data
+        })
+      })
       .catch((error) => {
         if (error.name === "AbortError") {
           setError("Cancelled Request");
@@ -33,11 +45,11 @@ export const useFetchTicker = (ticker) => {
     }
   };
 
-  return { 
-    data, 
-    loading, 
-    error, 
-    handleCancelRequest 
+  return {
+    data,
+    loading,
+    error,
+    handleCancelRequest
   };
 }
 
