@@ -10,12 +10,14 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'bgBody': '#0E8388',
-        'bgComponent': '#2C3333',
-        'bgElement': '#2E4F4F'
+        'body': '#0E8388',
+        'component': '#2C3333',
+        'item': '#2E4F4F',
+        'light': '#CBE4DE'
       },
       textColor: {
-        'textBody': '#CBE4DE',
+        'body': '#CBE4DE',
+        'darkBody': '#2C3333',
       },
       colors: {
         'lightColor': '#CBE4DE',

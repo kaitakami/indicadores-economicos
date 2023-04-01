@@ -4,9 +4,11 @@ import Header from "./Header";
 const Layout = ({ children }) => {
   return (
     <>
-      <div className="bg-bgBody text-textBody min-w-screen min-h-screen relative">
-        <Header />
-        {children}
+      <div className="flex flex-col justify-between content-center bg-body text-body min-w-screen min-h-screen relative">
+        <div>
+          <Header />
+          {children}
+        </div>
         <Footer />
       </div>
       <Toaster />
@@ -18,13 +20,13 @@ export default Layout;
 
 const Footer = () => {
   return (
-    <footer className="bg-white shadow flex flex-col justify-between sm:flex-row  p-4 sm:p-6 dark:bg-gray-800 absolute items-center bottom-0 w-full space-y-3">
+    <footer className="bg-component shadow flex flex-col justify-between sm:flex-row p-4 sm:px-9 dark:bg-gray-800 items-center w-full space-y-3">
       <div className="flex gap-4 items-center">
         <div className="flex justify-end items-center space-x-1">
           <a
             href="https://github.com/kaitakami/indicadores-economicos"
             data-tooltip-target="tooltip-github"
-            className="inline-flex justify-center text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+            className="inline-flex justify-center text-body rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-body hover:text-body hover:bg-body dark:hover:bg-gray-600"
             rel="noopener noreferrer"
             target="_blank"
           >
@@ -40,17 +42,17 @@ const Footer = () => {
           <div
             id="tooltip-github"
             role="tooltip"
-            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-body bg-component rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
           >
             Star us on GitHub
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
         </div>
-        <p className="text-sm text-gray-500 dark:text-gray-400 sm:mb-0">
+        <p className="text-sm text-body dark:text-gray-400 opacity-80 sm:mb-0">
           &copy; 2023 Indicadores Económicos
         </p>
       </div>
-      <div className="flex gap-4 px-9">
+      <div className="flex gap-4 sm:pl-9">
         <a
           href="https://www.kaitakami.dev"
           rel="noopener noreferrer"
