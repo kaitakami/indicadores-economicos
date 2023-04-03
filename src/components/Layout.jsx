@@ -1,5 +1,5 @@
-import { Toaster } from "react-hot-toast";
-import Header from "./Header";
+import { Toaster } from 'react-hot-toast'
+import Header from './Header'
 
 const Layout = ({ children }) => {
   return (
@@ -13,10 +13,10 @@ const Layout = ({ children }) => {
       </div>
       <Toaster />
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
 
 const Footer = () => {
   return (
@@ -77,5 +77,5 @@ const Footer = () => {
         </a>
       </div>
     </footer>
-  );
-};
+  )
+}
