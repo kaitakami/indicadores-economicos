@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 export const useFetchTicker = (ticker) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [controller, setController] = useState(null);
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [controller, setController] = useState(null)
 
   useEffect(() => {
     const URL = `https://www.econdb.com/api/series/${ticker}/?API_TOKEN=ed4c18f504bdb799ab4e0d431658ad73fe1a37f5&format=json`
@@ -28,8 +28,8 @@ export const useFetchTicker = (ticker) => {
         })
       })
       .catch((error) => {
-        if (error.name === 'AbortError') {
-          setError('Cancelled Request')
+        if (error.name === "AbortError") {
+          setError("Cancelled Request");
         } else {
           setError(error)
         }
@@ -45,10 +45,4 @@ export const useFetchTicker = (ticker) => {
   }
 
   return { data, loading, error, handleCancelRequest }
-  return {
-    data,
-    loading,
-    error,
-    handleCancelRequest
-  };
 }
