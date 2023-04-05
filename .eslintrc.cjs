@@ -3,9 +3,16 @@ module.exports = {
     browser: true,
     es2021: true
   },
+  settings: {
+    react: {
+      version: 'detect',
+    }
+  },
   extends: [
     'plugin:react/recommended',
-    'standard'
+    'plugin:react/jsx-runtime',
+    'standard',
+    'eslint-config-prettier'
   ],
   overrides: [
   ],
@@ -14,10 +21,9 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react',
-    'prettier'
+    'react'
   ],
   rules: {
-    'prettier/prettier': 'error'
+    'react/prop-types': 'off',
   }
 }
