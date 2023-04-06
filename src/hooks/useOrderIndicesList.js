@@ -5,7 +5,7 @@ export const useOrderIndicesList = () => {
   const [filterCodes, setFilterCodes] = useState([])
 
   useEffect(() => {
-    let newFilter = []
+    const newFilter = []
     /* Por cada valor (item) del array de objetos que se importa del archivo indices.js... */
     indices.map((item) => {
       /* A todos los que tengan un CPI que no esten ya guardados, se guardarán en newFilter */
@@ -14,14 +14,14 @@ export const useOrderIndicesList = () => {
         !newFilter.includes({
           codeType: 'country',
           code: `${item.ticker}`.slice(3),
-          description: `${item.country}`
+          description: `${item.country}`,
         })
       ) {
         /* Se guarda el tipo de código (country o register), el código y su referencias */
         newFilter.push({
           codeType: 'country',
           code: `${item.ticker}`.slice(3),
-          description: `${item.country}`
+          description: `${item.country}`,
         })
       }
 
@@ -30,13 +30,13 @@ export const useOrderIndicesList = () => {
         !newFilter.includes({
           codeType: 'register',
           code: `${item.ticker}`.slice(0, -2),
-          description: `${item.name}`
+          description: `${item.name}`,
         })
       ) {
         newFilter.push({
           codeType: 'register',
           code: `${item.ticker}`.slice(0, -2),
-          description: `${item.name}`
+          description: `${item.name}`,
         })
       }
     })

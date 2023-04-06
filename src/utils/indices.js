@@ -25023,5 +25023,5 @@ export const indices = [
     ticker: 'IMPMONVN',
     country: 'Vietnam',
     name: 'Monthly imports',
-  }
+  },
 ]
