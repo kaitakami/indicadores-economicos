@@ -5,7 +5,7 @@ export const useOrderIndicesList = () => {
   const [filterCodes, setFilterCodes] = useState([])
 
   useEffect(() => {
-    let newFilter = []
+    const newFilter = []
     /* Por cada valor (item) del array de objetos que se importa del archivo indices.js... */
     indices.map((item) => {
       /* A todos los que tengan un CPI que no esten ya guardados, se guardarán en newFilter */

@@ -4,43 +4,62 @@ import FormGraphicData from './components/FormGraphicData'
 import { useFetchTicker } from './hooks/useFetchTicker'
 import { useOrderIndicesList } from './hooks/useOrderIndicesList'
 import { useState, useEffect } from 'react'
-import '../public/coin.svg'
+import toast from 'react-hot-toast'
+import { CurrencyDollarIcon } from '@heroicons/react/solid'
 
 const App = () => {
-  const [dataStats, setDataStats] = useState({ data: [] })
-  const [currentDataTicker, setCurrentDataTicker] = useState({
-    ticker: 'M3YDAZ',
-    register: '3 month yield',
-    country: 'Afghanistan',
-  })
+  const [currentDataTicker, setCurrentDataTicker] = useState({})
 
   const { data, loading, error, handleCancelRequest } = useFetchTicker(
     currentDataTicker.ticker
   )
+  
+  const [dataStats, setDataStats] = useState({data: []})
   const filterCodes = useOrderIndicesList()
 
-  useEffect(() => {
-    if (data) {
-      setDataStats(data)
-    }
-  }, [currentDataTicker])
+  // Se utiliza el tostador para generar los mensajes de estado
+  const notifyLoading = () =>
+    toast.loading(
+      <span>
+        <CurrencyDollarIcon className="inline w-5 mr-1 animate-spin text-dark" />
+        loading...
+      </span>,
+      {
+        id: 'hopefully',
+        icon: null,
+        className: 'bg-light text-dark',
+      }
+    )
+  const notifySuccess = () => {
+    toast.dismiss()
+    toast.success('data uploaded successfully', {
+      id: 'successfully',
+      className: 'bg-light text-dark',
+    })
+  }
+  const notifyError = (mssj) => {
+    toast.dismiss()
+    toast.error(mssj, {
+      id: 'wrongly',
+      className: 'bg-light text-dark',
+    })
+  }
 
-  useEffect(() => {
+  function updateData() {
     if (data) {
-      setDataStats(data)
-    }
-  }, [])
-
-  function changeCurrentIndex(type, value) {
-    const newObject = currentDataTicker
-    if (type === 'register') {
-      newObject.register = `${value}`
-      setCurrentDataTicker(newObject)
+      setDataStats(data);
+      console.log(data.ticker + "-" + currentDataTicker.ticker)
     } else {
-      newObject.country = `${value}`
-      setCurrentDataTicker(newObject)
+      setDataStats(prevState => ({
+        ...prevState,
+        data: []
+      }));
     }
   }
+
+  useEffect(() => {
+    updateData();
+  }, [currentDataTicker])
 
   return (
     <Layout>
@@ -49,14 +68,15 @@ const App = () => {
           setCurrentDataTicker={setCurrentDataTicker}
           currentDataTicker={currentDataTicker}
           filterCodes={filterCodes}
-          dataStats={dataStats}
           render={(item) => (
             <ItemFormGraphic
               key={item.code}
               code={item.code}
               codeType={item.codeType}
               description={item.description}
-              changeCurrentIndex={changeCurrentIndex}
+              setCurrentDataTicker={setCurrentDataTicker}
+              currentDataTicker={currentDataTicker}
+              setDataStats={setDataStats}
             />
           )}
         />
@@ -64,13 +84,15 @@ const App = () => {
         <StatsGraphic
           currentDataTicker={currentDataTicker}
           dataStats={dataStats}
-          loading={loading}
           error={error}
+          loading={loading}
           handleCancelRequest={handleCancelRequest}
-          onLoading={() => <span><img src="../public/coin.svg" alt="coin" className='inline mr-4 w-6 h-6 animate-spin sm:w-8 sm:h-8' />Loading...</span>}
-          onError={() => <span>Not Found</span>}
-          render={() => <span>{currentDataTicker.register} of {currentDataTicker.country}</span>}
-        / >
+          onSuccess={notifySuccess}
+          onLoading={notifyLoading}
+          onError={notifyError}
+          data={data}
+          updateData={updateData}
+        />
       </section>
     </Layout>
   )
@@ -79,6 +101,7 @@ const App = () => {
 export default App
 
 function ItemFormGraphic(props) {
+  // Si el string del Option tiene más de 30 caracteres, se corta en el caracter número 30 y se colocan 3 puntos
   const cutWorld = () => {
     if (props.description.length > 30) {
       return `${props.description.slice(0, 30)}...`
@@ -86,12 +109,24 @@ function ItemFormGraphic(props) {
       return props.description
     }
   }
+  
+  function changeCurrentData(type, value) {
+    props.setCurrentDataTicker(prevState => ({
+      ...prevState, // destructuring del estado
+      [type]: value, // agregando o modificando valores a currentDataticker
+    }))
+    props.setDataStats(prevState => ({
+      ...prevState, // destructuring del estado
+      [type]: value, // agregando o modificando valores a currentDataticker
+    }))
+  }
+
   return (
     <option
       value={props.code}
       title={props.description}
       onClick={() => {
-        props.changeCurrentIndex(props.codeType, props.description)
+        changeCurrentData(props.codeType, props.description)
       }}
     >
       {cutWorld()}

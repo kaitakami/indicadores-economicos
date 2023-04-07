@@ -4,6 +4,8 @@ function FormGraphicData(props) {
   const formGetData = useRef(null)
   const getFormInfo = (event) => {
     event.preventDefault()
+    
+    props.updateData
     const formData = new FormData(formGetData.current)
     const loginData = {
       dataTeletype: formData.get('dataTeletype'),
@@ -12,13 +14,11 @@ function FormGraphicData(props) {
     const newObject = props.currentDataTicker
     newObject.ticker = `${loginData.dataTeletype}${loginData.dataCountry}`
     props.setCurrentDataTicker(newObject)
-
     props.setCurrentDataTicker((prevState) => ({
       ...prevState, // destructuring del estado
       [event.target.name]: event.target.value, // agregando o modificando valores a currentDataticker
-      data: props.dataStats.data,
-      otro: props.dataStats.description
     }))
+    console.log(props.currentDataTicker)
   }
 
   return (
@@ -30,7 +30,7 @@ function FormGraphicData(props) {
       >
         <div className="flex flex-col w-fit sm:flex-row sm:mt-4">
           <label htmlFor="dataTeletype" className="w-fit mr-2">
-            Selecciona el tipo de gráfica:
+            Selecciona un índice:
           </label>
           <select
             defaultValue={'CPI'}
