@@ -1,65 +1,16 @@
 import Layout from './components/Layout'
 import StatsGraphic from './components/StatsGraphic'
 import FormGraphicData from './components/FormGraphicData'
-import { useFetchTicker } from './hooks/useFetchTicker'
-import { useOrderIndicesList } from './hooks/useOrderIndicesList'
-import { useState, useEffect } from 'react'
-import toast from 'react-hot-toast'
-import { CurrencyDollarIcon } from '@heroicons/react/solid'
+import { countries } from './utils/countries'
+import { indices } from './utils/indices.js'
+import { useState } from 'react'
+import { ExclamationCircleIcon } from '@heroicons/react/outline'
 
 const App = () => {
-	const [currentDataTicker, setCurrentDataTicker] = useState({})
-
-	const { data, loading, error, handleCancelRequest } = useFetchTicker(
-		currentDataTicker.ticker,
-	)
-
-	const [dataStats, setDataStats] = useState({ data: [] })
-	const filterCodes = useOrderIndicesList()
-
-	// Se utiliza el tostador para generar los mensajes de estado
-	const notifyLoading = () =>
-		toast.loading(
-			<span>
-				<CurrencyDollarIcon className="inline w-5 mr-1 animate-spin text-dark" />
-				loading...
-			</span>,
-			{
-				id: 'hopefully',
-				icon: null,
-				className: 'bg-light text-dark',
-			},
-		)
-	const notifySuccess = () => {
-		toast.dismiss()
-		toast.success('data uploaded successfully', {
-			id: 'successfully',
-			className: 'bg-light text-dark',
-		})
-	}
-	const notifyError = (mssj) => {
-		toast.dismiss()
-		toast.error(mssj, {
-			id: 'wrongly',
-			className: 'bg-light text-dark',
-		})
-	}
-
-	function updateData() {
-		if (data) {
-			setDataStats(data)
-			console.log(data.ticker + '-' + currentDataTicker.ticker)
-		} else {
-			setDataStats((prevState) => ({
-				...prevState,
-				data: [],
-			}))
-		}
-	}
-
-	useEffect(() => {
-		updateData()
-	}, [currentDataTicker])
+	const [currentDataTicker, setCurrentDataTicker] = useState({
+		ticker: '',
+		country: '',
+	})
 
 	return (
 		<Layout>
@@ -67,32 +18,27 @@ const App = () => {
 				<FormGraphicData
 					setCurrentDataTicker={setCurrentDataTicker}
 					currentDataTicker={currentDataTicker}
-					filterCodes={filterCodes}
-					render={(item) => (
+					countries={countries}
+					indices={indices}
+					render={(value, description) => (
 						<ItemFormGraphic
-							key={item.code}
-							code={item.code}
-							codeType={item.codeType}
-							description={item.description}
-							setCurrentDataTicker={setCurrentDataTicker}
-							currentDataTicker={currentDataTicker}
-							setDataStats={setDataStats}
+							key={value}
+							value={value}
+							description={description}
 						/>
 					)}
 				/>
 
-				<StatsGraphic
-					currentDataTicker={currentDataTicker}
-					dataStats={dataStats}
-					error={error}
-					loading={loading}
-					handleCancelRequest={handleCancelRequest}
-					onSuccess={notifySuccess}
-					onLoading={notifyLoading}
-					onError={notifyError}
-					data={data}
-					updateData={updateData}
-				/>
+				{!(currentDataTicker.ticker && currentDataTicker.country) && (
+					<span>
+						<ExclamationCircleIcon className="inline w-5 mr-1 animate-pulse text-dark" />{' '}
+						Inicia seleccionando un país y un indíce
+					</span>
+				)}
+
+				{currentDataTicker.ticker && currentDataTicker.country && (
+					<StatsGraphic ticker={currentDataTicker.ticker} />
+				)}
 			</section>
 		</Layout>
 	)
@@ -102,34 +48,17 @@ export default App
 
 function ItemFormGraphic(props) {
 	// Si el string del Option tiene más de 30 caracteres, se corta en el caracter número 30 y se colocan 3 puntos
-	const cutWorld = () => {
-		if (props.description.length > 30) {
-			return `${props.description.slice(0, 30)}...`
+	const cutWorld = (word) => {
+		if (word.length > 30) {
+			return `${word.slice(0, 30)}...`
 		} else {
-			return props.description
+			return word
 		}
 	}
 
-	function changeCurrentData(type, value) {
-		props.setCurrentDataTicker((prevState) => ({
-			...prevState, // destructuring del estado
-			[type]: value, // agregando o modificando valores a currentDataticker
-		}))
-		props.setDataStats((prevState) => ({
-			...prevState, // destructuring del estado
-			[type]: value, // agregando o modificando valores a currentDataticker
-		}))
-	}
-
 	return (
-		<option
-			value={props.code}
-			title={props.description}
-			onClick={() => {
-				changeCurrentData(props.codeType, props.description)
-			}}
-		>
-			{cutWorld()}
+		<option value={props.value} title={props.description}>
+			{cutWorld(props.description)}
 		</option>
 	)
 }

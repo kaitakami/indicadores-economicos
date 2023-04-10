@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react'
 import { indices } from '../utils/indices.js'
 
+/* 
+	Devuelve un array de objetos con:
+	{
+		codeType: 'country',
+		code: 'MX',
+		description: 'Mexico',
+	}
+*/
+
 export const useOrderIndicesList = () => {
 	const [filterCodes, setFilterCodes] = useState([])
 
@@ -26,7 +35,7 @@ export const useOrderIndicesList = () => {
 			}
 
 			if (
-				item.country === 'Mexico' &&
+				item.country === 'United States' &&
 				!newFilter.includes({
 					codeType: 'register',
 					code: `${item.ticker}`.slice(0, -2),
