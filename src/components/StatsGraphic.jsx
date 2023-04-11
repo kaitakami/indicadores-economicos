@@ -1,6 +1,7 @@
+import { useEffect } from 'react'
 import { useFetchTicker } from '../hooks/useFetchTicker'
 import { Card, AreaChart, Title } from '@tremor/react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 import { CurrencyDollarIcon } from '@heroicons/react/solid'
 
 const valueFormatter = (number) =>
@@ -37,13 +38,14 @@ function StatsGraphic({ ticker }) {
 
 	const { data, loading, error, handleCancelRequest } = useFetchTicker(ticker)
 
+	useEffect(() => {
+		loading && onLoading()
+		error && onError(error)
+		!loading && !error && onSuccess()
+	}, [data])
+
 	return (
 		<>
-			<div className="hidden">
-				{loading && onLoading()}
-				{error && onError(error)}
-				{!loading && !error && onSuccess()}
-			</div>
 			{!!data && (
 				<Card className="bg-component ring-none rounded-md px-2 pt-4 md:pr-6 md:pb-8">
 					<div className="text-center">

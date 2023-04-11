@@ -29,7 +29,9 @@ function FormGraphicData(props) {
 						onChange={getFormInfo}
 					>
 						<option value="">- Selecciona un país -</option>
-						{props.countries.map((item) => props.render(item, item))}
+						{props.countries.map((item) => (
+							<ItemFormGraphic key={item} value={item} description={item} />
+						))}
 					</select>
 				</div>
 				{/* select index */}
@@ -50,8 +52,13 @@ function FormGraphicData(props) {
 							{props.indices.map(
 								(item) =>
 									item.country &&
-									item.country === props.currentDataTicker.country &&
-									props.render(item.ticker, item.name),
+									item.country === props.currentDataTicker.country && (
+										<ItemFormGraphic
+											key={item.ticker}
+											value={item.ticker}
+											description={item.name}
+										/>
+									),
 							)}
 						</select>
 					</div>
@@ -62,3 +69,20 @@ function FormGraphicData(props) {
 }
 
 export default FormGraphicData
+
+function ItemFormGraphic(props) {
+	// Si el string del Option tiene más de 30 caracteres, se corta en el caracter número 30 y se colocan 3 puntos
+	const cutWorld = (word) => {
+		if (word.length > 30) {
+			return `${word.slice(0, 30)}...`
+		} else {
+			return word
+		}
+	}
+
+	return (
+		<option value={props.value} title={props.description}>
+			{cutWorld(props.description)}
+		</option>
+	)
+}

@@ -17,4 +17,7 @@ https://vitejs.dev/guide/
 Documentación toast
 https://react-hot-toast.com/docs
 
+Documentación de heroicons
+https://v1.heroicons.com/
+
  -->
