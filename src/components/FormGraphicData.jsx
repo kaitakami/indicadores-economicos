@@ -14,7 +14,10 @@ function FormGraphicData(props) {
 
 	return (
 		<>
-			<form className="w-fit h-fit flex flex-col items-start" action="/">
+			<form
+				className="w-fit h-fit flex flex-col items-start mx-auto"
+				action="/"
+			>
 				{/* select country */}
 				<div className="flex flex-col w-fit sm:flex-row sm:mt-4">
 					<label htmlFor="country" className="w-fit mr-2">
@@ -23,7 +26,7 @@ function FormGraphicData(props) {
 					<select
 						name="country"
 						id="country"
-						className={`min-w-min max-w-fit my-2 p-1 bg-light text-darkBody rounded-sm cursor-pointer text-sm sm:my-0 sm:mx-2 sm:text-base ${
+						className={`min-w-min max-w-fit my-2 p-1 bg-text text-darkBody rounded-sm cursor-pointer text-sm sm:my-0 sm:mx-2 sm:text-base ${
 							props.currentDataTicker.country === '' && 'text-gray-500'
 						} focus:text-darkBody`}
 						onChange={getFormInfo}
@@ -43,7 +46,7 @@ function FormGraphicData(props) {
 						<select
 							name="ticker"
 							id="ticker"
-							className={`min-w-min max-w-fit my-2 p-1 bg-light text-darkBody rounded-sm cursor-pointer text-sm sm:my-0 sm:mx-2 sm:text-base ${
+							className={`min-w-min max-w-fit my-2 p-1 bg-text text-darkBody rounded-sm cursor-pointer text-sm sm:my-0 sm:mx-2 sm:text-base ${
 								props.currentDataTicker.ticker === '' && 'text-gray-500'
 							} focus:text-darkBody`}
 							onChange={getFormInfo}

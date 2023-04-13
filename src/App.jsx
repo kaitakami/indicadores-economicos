@@ -23,7 +23,7 @@ const App = () => {
 				/>
 
 				{!(currentDataTicker.ticker && currentDataTicker.country) && (
-					<span>
+					<span className="text-center">
 						<ExclamationCircleIcon className="inline w-5 mr-1 animate-pulse text-dark" />{' '}
 						Inicia seleccionando un país y un indíce
 					</span>

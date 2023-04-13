@@ -13,7 +13,7 @@ module.exports = {
         'body': '#0E8388',
         'component': '#2C3333',
         'item': '#2E4F4F',
-        'light': '#CBE4DE'
+        'text': '#CBE4DE'
       },
       textColor: {
         'body': '#CBE4DE',
@@ -22,6 +22,12 @@ module.exports = {
       colors: {
         'lightColor': '#CBE4DE',
       },
+      backgroundImage: {
+        'body': '#0E8388',
+        'component': '#2C3333',
+        'item': '#2E4F4F',
+        'text': '#CBE4DE'
+      }
     },
   },
   plugins: [],

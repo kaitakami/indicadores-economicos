@@ -18,21 +18,21 @@ function StatsGraphic({ ticker }) {
 			{
 				id: 'loading',
 				icon: null,
-				className: 'bg-light text-dark',
+				className: 'bg-text text-dark',
 			},
 		)
 	const onSuccess = () => {
 		toast.dismiss()
 		toast.success('data uploaded successfully', {
 			id: 'success',
-			className: 'bg-light text-dark',
+			className: 'bg-text text-dark',
 		})
 	}
 	const onError = (mssj) => {
 		toast.dismiss()
 		toast.error(mssj, {
 			id: 'error',
-			className: 'bg-light text-dark',
+			className: 'bg-text text-dark',
 		})
 	}
 
