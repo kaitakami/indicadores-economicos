@@ -20,7 +20,7 @@ export default Layout
 
 const Footer = () => {
 	return (
-		<footer className="bg-component shadow flex flex-col justify-between sm:flex-row p-4 sm:px-9 dark:bg-gray-800 items-center w-full space-y-3">
+		<footer className="bg-component shadow flex flex-col justify-between sm:flex-row p-2 sm:px-9 dark:bg-gray-800 items-center w-full space-y-2">
 			<div className="flex gap-4 items-center">
 				<div className="flex justify-end items-center space-x-1">
 					<a
