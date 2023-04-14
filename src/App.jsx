@@ -14,20 +14,20 @@ const App = () => {
 
 	return (
 		<Layout>
-			<section className="flex flex-col gap-4 content-between max-w-2xl mx-auto my-4">
-				<FormGraphicData
-					setCurrentDataTicker={setCurrentDataTicker}
-					currentDataTicker={currentDataTicker}
-					countries={countries}
-					indices={indices}
-				/>
-
+			<section className="flex flex-col gap-4 mx-auto my-4">
 				{!(currentDataTicker.ticker && currentDataTicker.country) && (
 					<span>
 						<ExclamationCircleIcon className="inline w-5 mr-1 animate-pulse text-dark" />{' '}
 						Inicia seleccionando un país y un indíce
 					</span>
 				)}
+
+				<FormGraphicData
+					setCurrentDataTicker={setCurrentDataTicker}
+					currentDataTicker={currentDataTicker}
+					countries={countries}
+					indices={indices}
+				/>
 
 				{currentDataTicker.ticker && currentDataTicker.country && (
 					<StatsGraphic ticker={currentDataTicker.ticker} />
