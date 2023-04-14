@@ -31,9 +31,12 @@ function FormGraphicData(props) {
 
 	return (
 		<>
-			<form className="w-fit h-fit flex flex-col items-start" action="/">
+			<form
+				className="flex flex-col items-start mx-auto w-full pb-5 max-w-lg"
+				action="/"
+			>
 				{/* select country */}
-				<div className="flex flex-col w-fit sm:mt-4">
+				<div className="flex flex-col w-full sm:mt-4">
 					<label
 						htmlFor="country"
 						className="w-fit mr-2 text-stone-300 font-medium"
@@ -50,7 +53,7 @@ function FormGraphicData(props) {
 						}}
 					>
 						<div className="relative mt-1">
-							<div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-300 sm:text-sm">
+							<div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-300 sm:text-sm max-w-lg">
 								<Combobox.Input
 									className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
 									displayValue={(country) => country}
@@ -126,10 +129,10 @@ function FormGraphicData(props) {
 				</div>
 				{/* select index */}
 				{props.currentDataTicker.country && (
-					<div className="flex flex-col w-fit sm:mt-4">
+					<div className="flex flex-col w-full sm:mt-4">
 						<label
 							htmlFor="country"
-							className="w-fit mr-2 text-stone-300 font-medium"
+							className="mr-2 text-stone-300 font-medium"
 						>
 							Selecciona el índice:
 						</label>
@@ -143,7 +146,7 @@ function FormGraphicData(props) {
 							}}
 						>
 							<div className="relative mt-1 w-full">
-								<div className="relative w-full sm:w-96 cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-300 sm:text-sm">
+								<div className="relative w-full max-w-lg cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-300 sm:text-sm">
 									<Combobox.Input
 										className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
 										displayValue={(ticker) => ticker}
