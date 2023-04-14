@@ -4,8 +4,8 @@ import Header from './Header'
 const Layout = ({ children }) => {
 	return (
 		<>
-			<div className="flex flex-col justify-between content-center bg-body text-body min-w-screen min-h-screen relative">
-				<div>
+			<div className="flex flex-col justify-between content-center bg-body text-body min-w-screen min-h-screen relative p-4">
+				<div className="max-w-3xl w-full mx-auto">
 					<Header />
 					{children}
 				</div>
