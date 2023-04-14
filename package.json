@@ -13,6 +13,7 @@
 		"prettier-check": "prettier --check src/**/*.{js,jsx,ts,tsx,css,scss,md}"
 	},
 	"dependencies": {
+		"@headlessui/react": "^1.7.14",
 		"@heroicons/react": "^1.0.6",
 		"@tremor/react": "^2.0.2",
 		"class-variance-authority": "^0.4.0",
