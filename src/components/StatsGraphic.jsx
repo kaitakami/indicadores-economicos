@@ -36,7 +36,7 @@ function StatsGraphic({ ticker }) {
 		})
 	}
 
-	const { data, loading, error, handleCancelRequest } = useFetchTicker(ticker)
+	const { data, loading, error } = useFetchTicker(ticker)
 
 	useEffect(() => {
 		loading && onLoading()
