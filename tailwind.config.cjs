@@ -1,28 +1,24 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-
-    // Path to the tremor module
-    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
-  ],
+/** @type {import('tailwindcss').Config} */ module.exports = {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", // Path to the tremor module
+    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",],
   theme: {
-    extend: {
+    extend:
+    {
       backgroundColor: {
-        'body': '#0E8388',
-        'component': '#2C3333',
+        'body':
+          '#1c1917',
+        'component':
+          '#292524',
         'item': '#2E4F4F',
-        'light': '#CBE4DE'
+        'light': '#d6d3d1'
       },
       textColor: {
-        'body': '#CBE4DE',
+        'body': '#e7e5e4',
         'darkBody': '#2C3333',
       },
       colors: {
-        'lightColor': '#CBE4DE',
+        'lightColor': '#e7e5e4',
       },
     },
-  },
-  plugins: [],
+  }, plugins: [],
 }

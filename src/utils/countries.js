@@ -201,7 +201,6 @@ export const countries = [
 	'Samoa',
 	'Sao Tome And Principe',
 	'Tonga',
-	'',
 	'European Union (27 countries)',
 	'European Union (25 countries)',
 	'European Union (without United Kingdom)',

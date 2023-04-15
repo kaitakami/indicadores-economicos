@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
 	return (
 		<>
 			<div className="flex flex-col justify-between content-center bg-body text-body min-w-screen min-h-screen relative">
-				<div>
+				<div className="max-w-3xl w-full mx-auto p-4">
 					<Header />
 					{children}
 				</div>
@@ -20,7 +20,7 @@ export default Layout
 
 const Footer = () => {
 	return (
-		<footer className="bg-component shadow flex flex-col justify-between sm:flex-row p-4 sm:px-9 dark:bg-gray-800 items-center w-full space-y-3">
+		<footer className="bg-component shadow flex flex-col justify-between sm:flex-row p-2 sm:px-9 dark:bg-gray-800 items-center w-full space-y-2">
 			<div className="flex gap-4 items-center">
 				<div className="flex justify-end items-center space-x-1">
 					<a
