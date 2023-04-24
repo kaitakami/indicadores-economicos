@@ -5,10 +5,8 @@
     extend:
     {
       backgroundColor: {
-        'body':
-          '#1c1917',
-        'component':
-          '#292524',
+        'body': '#1c1917',
+        'component': '#292524',
         'item': '#2E4F4F',
         'light': '#d6d3d1'
       },

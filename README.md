@@ -20,4 +20,7 @@ https://react-hot-toast.com/docs
 Documentación de heroicons
 https://v1.heroicons.com/
 
+Documentación de headlessui
+https://headlessui.com/
+
  -->

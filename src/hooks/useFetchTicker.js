@@ -7,6 +7,12 @@ export const useFetchTicker = (ticker) => {
 	const [controller, setController] = useState(null)
 
 	useEffect(() => {
+		if(data || !loading) {
+			setData(null)
+			setLoading(true)
+			setError(null)
+			setController(null)
+		}
 		const URL = `https://www.econdb.com/api/series/${ticker}/?API_TOKEN=ed4c18f504bdb799ab4e0d431658ad73fe1a37f5&format=json`
 
 		const abortController = new AbortController()
@@ -34,7 +40,7 @@ export const useFetchTicker = (ticker) => {
 			})
 			.catch((error) => {
 				if (error.name === 'AbortError') {
-					setError('Cancelled Request')
+					setError('Solicitud cancelada')
 				} else {
 					setError(error)
 				}
@@ -45,9 +51,9 @@ export const useFetchTicker = (ticker) => {
 	const handleCancelRequest = () => {
 		if (controller) {
 			controller.abort()
-			setError('Cancelled Request')
+			setError('Solicitud cancelada')
 		}
 	}
 
-	return { data, loading, error, handleCancelRequest }
+	return { data, loading, error, setError, handleCancelRequest }
 }

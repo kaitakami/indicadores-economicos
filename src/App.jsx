@@ -16,7 +16,7 @@ const App = () => {
 		<Layout>
 			<section className="flex flex-col gap-4 mx-auto my-4">
 				{!(currentDataTicker.ticker && currentDataTicker.country) && (
-					<span>
+					<span className='sm:text-center'>
 						<ExclamationCircleIcon className="inline w-5 mr-1 animate-pulse text-dark" />{' '}
 						Inicia seleccionando un país y un indíce
 					</span>
