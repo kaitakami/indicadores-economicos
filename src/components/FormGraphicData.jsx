@@ -13,13 +13,13 @@ function FormGraphicData(props) {
 						.toLowerCase()
 						.replace(/\s+/g, '')
 						.includes(query.country.toLowerCase().replace(/\s+/g, '')),
-			  )
+			)
 
 	const filteredTickers =
 		query.ticker === ''
 			? props.indices.filter(
 					(index) => index.country === props.currentDataTicker.country,
-			  )
+			)
 			: props.indices
 					.filter((index) => index.country === props.currentDataTicker.country)
 					.filter((index) =>
@@ -32,7 +32,7 @@ function FormGraphicData(props) {
 	return (
 		<>
 			<form
-				className="flex flex-col items-start mx-auto w-full pb-5 max-w-lg"
+				className="flex flex-col items-start gap-2 mx-auto w-full pb-5 max-w-lg"
 				action="/"
 			>
 				{/* select country */}
